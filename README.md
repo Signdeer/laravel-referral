@@ -1,15 +1,4 @@
-
-<p align="center">
-    <img src="/images/header.jpeg" width="600" alt="Heading of Laravel Referral">
-    <p align="center">
-        <a href="https://packagist.org/packages/jijunair/laravel-referral"><img alt="Latest Version on Packagist" src="https://img.shields.io/packagist/v/jijunair/laravel-referral.svg?style=flat-square"></a>
-        <a href="https://packagist.org/packages/jijunair/laravel-referral"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/jijunair/laravel-referral"></a>
-        <a href="https://packagist.org/packages/jijunair/laravel-referral"><img alt="License" src="https://img.shields.io/github/license/jijunair/laravel-referral"></a>
-    </p>
-</p>
-
-
-The **Laravel Referral** package (`jijunair/laravel-referral`) is a powerful and easy-to-use package for adding referral system functionality to your Laravel applications. With this package, you can effortlessly generate referral codes, track user referrals, and reward users based on their referrals.  
+This fork is maintained by [Signdeer](https://signdeer.com), a secure, modern platform for e-signatures, approvals, and digital document workflows built for African teams and global standards.
 
 ## Key Features  
 ✅ Generate unique referral codes for users  

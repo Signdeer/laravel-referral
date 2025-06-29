@@ -1,5 +1,5 @@
 {
-    "name": "jijunair/laravel-referral",
+    "name": "signdeer/laravel-referral",
     "description": "Laravel package for a referral system",
     "keywords": [
         "jijunair",
@@ -11,13 +11,13 @@
         "referral-system",
         "user-referral"
     ],
-    "homepage": "https://github.com/jijunair/laravel-referral",
+    "homepage": "https://github.com/signdeer/laravel-referral",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "Jiju Nair",
-            "email": "hello@jijunair.com"
+            "name": "Imran V. Mungai",
+            "email": "munga19ihub@gmail.com"
         }
     ],
     "require": {

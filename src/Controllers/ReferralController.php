@@ -13,18 +13,43 @@ class ReferralController extends Controller
      * @param  string  $referralCode
      * @return RedirectResponse
      */
-    public function assignReferrer($referralCode)
-    {
+    // public function assignReferrer($referralCode)
+    // {
+    //     $refCookieName = config('referral.cookie_name');
+    //     $refCookieExpiry = config('referral.cookie_expiry');
+    //     if (Cookie::has($refCookieName)) {
+    //         // Referral code cookie already exists, redirect to configured route
+    //         return redirect()->route(config('referral.redirect_route'));
+    //     } else {
+    //         // Create a referral code cookie and redirect to configured route
+    //         $ck = Cookie::make($refCookieName, $referralCode, $refCookieExpiry);
+    //         return redirect()->route(config('referral.redirect_route'))->withCookie($ck);
+    //     }
+    // }
+    
+    public function assignReferrer(Request $request, $referralCode) {
         $refCookieName = config('referral.cookie_name');
         $refCookieExpiry = config('referral.cookie_expiry');
-        if (Cookie::has($refCookieName)) {
-            // Referral code cookie already exists, redirect to configured route
-            return redirect()->route(config('referral.redirect_route'));
-        } else {
-            // Create a referral code cookie and redirect to configured route
+        $redirectRoute = config('referral.redirect_route');
+
+        $shouldRedirect = $request->has('redirect');
+
+        if ($shouldRedirect || Cookie::has($refCookieName)) {
             $ck = Cookie::make($refCookieName, $referralCode, $refCookieExpiry);
-            return redirect()->route(config('referral.redirect_route'))->withCookie($ck);
+            return redirect()->route($redirectRoute)->withCookie($ck);
         }
+
+        // Check if parent app overrides the view
+        $view = View::exists('referral.preview')
+            ? 'referral.preview'
+            : 'laravel-referral::preview'; // default in package
+
+        return response()
+            ->view($view, [
+                'referralCode' => $referralCode,
+                'redirectUrl' => route($redirectRoute, ['ref' => $referralCode]),
+            ])
+            ->withCookie(cookie()->make($refCookieName, $referralCode, $refCookieExpiry));
     }
 
     /**

@@ -4,6 +4,7 @@ namespace Jijunair\LaravelReferral\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Http\Request;
 
 class ReferralController extends Controller
 {

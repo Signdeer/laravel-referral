@@ -40,7 +40,7 @@ The **Laravel Referral** package (`jijunair/laravel-referral`) is a powerful and
 You can install the package via Composer by running the following command:
 
 ```bash
-composer require jijunair/laravel-referral
+composer require signdeer/laravel-referral
 ```
 
 #### Configuration

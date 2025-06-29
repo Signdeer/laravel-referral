@@ -24,7 +24,8 @@ class ReferralServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $viewPath = __DIR__ . '/../../../resources/views';
+        // $viewPath = __DIR__ . '/../../../resources/views';
+        $viewPath = base_path('vendor/signdeer/laravel-referral/resources/views');
 
         // Load package migrations
         $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');

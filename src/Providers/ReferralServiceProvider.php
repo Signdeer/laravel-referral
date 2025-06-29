@@ -24,44 +24,32 @@ class ReferralServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $viewPath = __DIR__ . '/../../resources/views';
+        $viewPath = __DIR__ . '/../../../resources/views';
 
         // Load package migrations
         $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-        // $this->loadViewsFrom($viewPath, 'laravel-referral');
-        $this->loadViewsFrom(resource_path('views/vendor/laravel-referral'), 'laravel-referral');
+
+        // ✅ Load views from inside the package
+        $this->loadViewsFrom($viewPath, 'laravel-referral');
 
         if ($this->app->runningInConsole()) {
-            // Publish package's configuration file
+            // Publish config
             $this->publishes([
                 __DIR__.'/../../config/referral.php' => config_path('referral.php'),
             ], 'laravel-referral-config');
 
-            // Publish package's migration files
+            // Publish migrations
             $this->publishes([
                 __DIR__.'/../../database/migrations' => database_path('migrations'),
             ], 'laravel-referral-migrations');
 
-
-            // $this->publishes([
-            //     $viewPath => resource_path('views/vendor/laravel-referral'),
-            // ], 'referral-views');
-
-
-            // Allow publishing the views
+            // Publish views
             $this->publishes([
                 $viewPath => resource_path('views/vendor/laravel-referral'),
             ], 'referral-views');
-                
-
         }
 
-        // Load package's routes
+        // Load package routes
         $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
-        
-        // Bind the ReferralController to the application container
-        $this->app->bind('Jijunair\LaravelReferral\Controllers\ReferralController', function ($app) {
-            return new \Jijunair\LaravelReferral\Controllers\ReferralController();
-        });
     }
 }

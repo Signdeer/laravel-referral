@@ -24,11 +24,12 @@ class ReferralServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $viewPath = __DIR__ . '/../../resources/views';
+        // $viewPath = __DIR__ . '/../../resources/views';
 
         // Load package migrations
         $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-        $this->loadViewsFrom($viewPath, 'laravel-referral');
+        // $this->loadViewsFrom($viewPath, 'laravel-referral');
+        $this->loadViewsFrom(resource_path('views/vendor/laravel-referral'), 'laravel-referral');
 
         if ($this->app->runningInConsole()) {
             // Publish package's configuration file
@@ -42,9 +43,16 @@ class ReferralServiceProvider extends ServiceProvider
             ], 'laravel-referral-migrations');
 
 
+            // $this->publishes([
+            //     $viewPath => resource_path('views/vendor/laravel-referral'),
+            // ], 'referral-views');
+
+
+            // Allow publishing the views
             $this->publishes([
-                $viewPath => resource_path('views/vendor/laravel-referral'),
+                __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-referral'),
             ], 'referral-views');
+                
 
         }
 
